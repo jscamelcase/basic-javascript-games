@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="./styles/intro-style.css" />
-    <script src="./scripts/script.js" defer></script>
+    <script src="./scripts/script.js" type="module" defer></script>
   </head>
   <body>
-    <section id="game-section">
+    <section id="start-section" class="player-board">
       <div class="title-container">
         <div class="title-word-container rock">
           <p>R</p>
@@ -48,9 +48,23 @@
           <img src="./images/scissors-svgrepo-com.svg" alt="scissors image" />
         </div>
       </div>
-      <div class="player-container">
-        <div class="player-selections">
-          <img src="./images/paper-roll-svgrepo-com.svg" alt="paper image" />
+    </section>
+    <section id="game-section" class="player-board">
+      <div class="game-container">
+        <div class="score-container">
+          <p>Your Score</p>
+          <p id="your-score"=><span id="score">0</span></p>
+          <p>Your High Score</p>
+          <p><span id="your-high">0</span></p>
+          <p>High Score</p>
+          <p><span id="high">0</span></p>
+        </div>
+        <h2>Select One: </h2>
+        <div class="game-console-container">
+          
+        </div>
+        <div class="play-container">
+          <button>Play</button>
         </div>
       </div>
     </section>

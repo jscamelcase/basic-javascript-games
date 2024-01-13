@@ -26,15 +26,27 @@ body {
   align-items: center;
 }
 
-#game-section {
+/*Utility*/
+
+.player-board {
   width: 350px;
   height: 90vh;
+  border: 5px dashed #5f4ddb;
+  padding: 10px;
+}
+
+#start-section {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
   align-items: center;
-  border: 5px dashed #5f4ddb;
-  padding: 10px;
+}
+
+h2 {
+  color: #dbc425;
+  text-align: center;
+  margin-top: 10px;
+  font-family: "orange kid";
 }
 
 /* Color Pallette
@@ -152,9 +164,10 @@ body {
 .start-container > button {
   display: none;
   text-decoration: none;
+  font-family: "orange kid";
   background-color: transparent;
   color: #5f4ddb;
-  padding: 6px 10px;
+  padding: 6px 10px 10px;
   border: 4px solid #5f4ddb;
   margin: 0;
   opacity: 0;
@@ -186,6 +199,56 @@ body {
   }
 }
 
-.player-container {
+/* game section */
+
+/* #game-section {
   display: none;
+} */
+
+.score-container {
+  color: white;
+  font-family: "orange kid";
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.game-console-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.9rem;
+}
+
+.button-left {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-right: 20px solid #bdb5f3;
+  border-bottom: 10px solid transparent;
+  margin-right: 20px;
+}
+
+.button-right {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-left: 20px solid #bdb5f3;
+  border-bottom: 10px solid transparent;
+  margin-left: 20px;
+}
+
+.player-item-container {
+  color: #5f4ddb;
+  text-align: center;
+  font-family: "orange kid";
+  font-size: 3rem;
+  margin-top: 10px;
+}
+
+.player-item-container p {
+  font-size: 1.2rem;
+}
+
+.player-item-container img {
+  width: 120px;
 }
