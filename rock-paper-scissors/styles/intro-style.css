@@ -30,14 +30,14 @@ body {
 
 .player-board {
   width: 350px;
-  height: 90vh;
+  height: 92vh;
   border: 5px dashed #5f4ddb;
   padding: 10px;
 }
 
 #start-section {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-direction: column;
   align-items: center;
 }
@@ -97,14 +97,17 @@ h2 {
 .title-image-container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .rock-image > img,
-.paper-image > img,
-.scissors-image > img {
+.paper-image > img {
   width: 80px;
   margin-right: 20px;
+}
+
+.scissors-image > img {
+  width: 90px;
 }
 
 .rock-image > img,
@@ -139,7 +142,6 @@ h2 {
 /* Start Button */
 
 .start-container {
-  align-self: center;
   font-family: "orange kid";
   font-size: 2rem;
   height: 100px;
