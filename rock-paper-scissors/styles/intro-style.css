@@ -254,3 +254,31 @@ h2 {
 .player-item-container img {
   width: 120px;
 }
+
+/* Play Button */
+
+.play-container {
+  text-align: center;
+  margin-top: 10px;
+}
+
+#play {
+  align-items: center;
+  font-family: "orange kid";
+  padding: 6px 40px 10px;
+  line-height: 100%;
+  vertical-align: center;
+  font-size: 1.3rem;
+  background: #bdb5f3;
+  color: white;
+}
+
+#play:hover,
+#play:focus {
+  background-color: #ecdc76;
+}
+
+#play:active {
+  background-color: white;
+  color: black;
+}
