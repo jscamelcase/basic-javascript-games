@@ -251,7 +251,8 @@ h2 {
   font-size: 1.2rem;
 }
 
-.player-item-container img {
+.player-item-container img,
+#cpu-image {
   width: 120px;
 }
 
@@ -281,4 +282,32 @@ h2 {
 #play:active {
   background-color: white;
   color: black;
+}
+
+/* CPU Content Section */
+
+.cpu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cpu-container #cpu-img {
+  margin-top: 10px;
+}
+
+#cpu-item-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#cpu-name {
+  color: #5f4ddb;
+  font-family: "orange kid";
+  font-size: 1.2rem;
+  margin-top: 10px;
+  text-align: center;
 }

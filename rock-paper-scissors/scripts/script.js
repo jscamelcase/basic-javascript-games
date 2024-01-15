@@ -57,6 +57,12 @@ const scrollRight = function () {
   setButtonColorToggle();
 };
 
+const pickCpuItem = function () {
+  const cpuPickIndex = Math.floor(Math.random() * gameData.length);
+  document.getElementById("cpu-image").src = gameData[cpuPickIndex].image;
+  document.getElementById("cpu-name").textContent = gameData[cpuPickIndex].name;
+};
+
 const repeatImage = function (imageElement, nameElement) {
   let cpuIndex = 0;
   const interval = setInterval(
@@ -79,9 +85,14 @@ const repeatImage = function (imageElement, nameElement) {
   setTimeout(function () {
     clearInterval(interval);
   }, 2000);
+
+  setTimeout(function () {
+    pickCpuItem();
+  }, 2003);
 };
 
 const repeatCPUDisplay = function () {
+  document.getElementById("cpu-result").innerHTML = "";
   const cpuItemContainer = document.createElement("div");
   const cpuItemImage = document.createElement("img");
   const cpuItemName = document.createElement("p");
@@ -91,11 +102,6 @@ const repeatCPUDisplay = function () {
   cpuItemContainer.append(cpuItemImage, cpuItemName);
   document.getElementById("cpu-result").append(cpuItemContainer);
   repeatImage(cpuItemImage, cpuItemName);
-};
-
-const pickCpuItem = function () {
-  const cpuPickIndex = Math.floor(Math.random() * gameData.length);
-  console.log(cpuPickIndex);
 };
 
 /* Delete at End */
@@ -116,7 +122,6 @@ const runCallbacks = function (event) {
     scrollRight();
   } else if (event.target.id === "play") {
     repeatCPUDisplay();
-    pickCpuItem();
   }
 };
 
