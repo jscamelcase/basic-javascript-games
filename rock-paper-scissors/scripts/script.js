@@ -1,6 +1,31 @@
 // Importing data file with rock, paper, and scissors
 import { gameData } from "../scripts/rps-data.js";
 
+// Importing Firbase Database and Dependencies
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+
+import {
+  getDatabase,
+  ref,
+  push,
+  onValue,
+  remove,
+  set,
+  child,
+  get,
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+//Intialise the Firebase App
+const appSettings = {
+  databaseURL:
+    "https://rock-paper-scissors-55c72-default-rtdb.europe-west1.firebasedatabase.app/",
+};
+
+const app = initializeApp(appSettings);
+const database = getDatabase(app);
+const highScoreInDB = ref(database, "highScore");
+
+// set()(
 // Self-Evoking Function to create local storage for players high score
 
 (function () {
@@ -11,11 +36,15 @@ import { gameData } from "../scripts/rps-data.js";
     localStorage.setItem("player-high", "0");
     document.getElementById("your-high").textContent = 0;
   }
+  const dbRef = ref(getDatabase());
+  get(child(dbRef, "highScore")).then((snapshot) => {
+    if (snapshot.exists()) {
+      document.getElementById("high").textContent = snapshot.val();
+    }
+  });
 })();
 
 let selectionIndex = 0;
-let score = document.getElementById("score").textContent || 0;
-let playerHigh = document.getElementById("your-high");
 
 const renderGameConsole = function () {
   const leftButton = document.createElement("div");
@@ -146,8 +175,13 @@ const scoreBoardUpdate = function () {
   const yourHighScore = document.getElementById("your-high");
   const highScore = document.getElementById("high");
   if (+currentScore.textContent > +yourHighScore.textContent) {
+    console.log("help");
     yourHighScore.textContent = currentScore.textContent;
     localStorage.setItem("player-high", yourHighScore.textContent);
+  }
+  if (+yourHighScore.textContent > +highScore.textContent) {
+    highScore.textContent = yourHighScore.textContent;
+    set(highScoreInDB, highScore.textContent);
   }
 };
 
@@ -164,7 +198,7 @@ const displayOutcome = function (outcome) {
     case "cpu":
       updateOutcome("./images/sad-circle-svgrepo-com.svg", "You Lost!", 0);
   }
-  // scoreBoardUpdate();
+  scoreBoardUpdate();
   document.querySelector(".results-container").style.display = "flex";
 };
 

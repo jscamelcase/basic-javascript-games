@@ -290,7 +290,7 @@ h2 {
 /* CPU Content Section */
 
 .cpu-container {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
