@@ -24,3 +24,4 @@ The guys of this project is built with HTML, plain CSS and JavaScript. Firebase 
 The app will run from any browser when the complete file set from the respository are added to a server. 
 
 # License 
+MIT License Copyright (c) 2024 Carl Paraskevas
