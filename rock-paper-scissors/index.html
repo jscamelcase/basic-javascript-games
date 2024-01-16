@@ -53,30 +53,35 @@
       <div class="game-container">
         <div class="score-container">
           <p>Your Score</p>
-          <p id="your-score"=><span id="score">0</span></p>
+          <p id="your-score"><span id="score">0</span></p>
           <p>Your High Score</p>
           <p><span id="your-high">0</span></p>
           <p>High Score</p>
           <p><span id="high">0</span></p>
         </div>
-        <h2>Select One: </h2>
-        <div class="game-console-container">
-        </div>
+        <h2>Select One:</h2>
+        <div class="game-console-container"></div>
         <div class="play-container">
           <button id="play">Play</button>
         </div>
       </div>
       <div class="cpu-container">
         <h2>CPU:</h2>
-        <div id="cpu-result">
-        </div>
+        <div id="cpu-result"></div>
       </div>
       <div class="results-container">
-        <img src="" alt="">
+        <img id="result-image" src="./images/trophy-svgrepo-com.svg" alt="" />
         <div class="results-message">
-          <h2></h2>
-          <p>You earned<span id="status"></span>points</p>
+          <h2 id="result-message">You won!</h2>
+          <p>
+            You earned <span id="status">1</span> point<span id="plural"></span
+            >.
+          </p>
           <p>Do you want to play again or quit?</p>
+        </div>
+        <div class="results-buttons">
+          <button id="play-again">Play Again</button>
+          <button id="quit">Quit</button>
         </div>
       </div>
     </section>

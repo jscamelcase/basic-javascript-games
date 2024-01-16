@@ -1,6 +1,21 @@
+// Importing data file with rock, paper, and scissors
 import { gameData } from "../scripts/rps-data.js";
 
+// Self-Evoking Function to create local storage for players high score
+
+(function () {
+  if (localStorage.getItem("player-high")) {
+    document.getElementById("your-high").textContent =
+      localStorage.getItem("player-high");
+  } else {
+    localStorage.setItem("player-high", "0");
+    document.getElementById("your-high").textContent = 0;
+  }
+})();
+
 let selectionIndex = 0;
+let score = document.getElementById("score").textContent || 0;
+let playerHigh = document.getElementById("your-high");
 
 const renderGameConsole = function () {
   const leftButton = document.createElement("div");
@@ -100,6 +115,7 @@ const createCPUDisplay = function () {
   cpuItemName.id = "cpu-name";
   cpuItemContainer.append(cpuItemImage, cpuItemName);
   document.getElementById("cpu-result").append(cpuItemContainer);
+  document.querySelector(".cpu-container").style.display = "flex";
 };
 
 const declareWinner = function () {
@@ -118,19 +134,50 @@ const declareWinner = function () {
   }
 };
 
-const displayScore = function (outcome) {
-  console.log(outcome);
+const updateOutcome = function (imgSource, text, points, plural = "s") {
+  document.getElementById("result-image").src = imgSource;
+  document.getElementById("result-message").textContent = text;
+  document.getElementById("status").textContent = points;
+  document.getElementById("plural").textContent = plural;
+};
+
+const scoreBoardUpdate = function () {
+  const currentScore = document.getElementById("score");
+  const yourHighScore = document.getElementById("your-high");
+  const highScore = document.getElementById("high");
+  if (+currentScore.textContent > +yourHighScore.textContent) {
+    yourHighScore.textContent = currentScore.textContent;
+    localStorage.setItem("player-high", yourHighScore.textContent);
+  }
+};
+
+const displayOutcome = function (outcome) {
+  switch (outcome) {
+    case "tie":
+      updateOutcome("./images/equal-sign-svgrepo-com.svg", "You Tied!", 0);
+      break;
+    case "player":
+      updateOutcome("./images/trophy-svgrepo-com.svg", "You Won!", 1, "");
+      document.getElementById("score").textContent =
+        +document.getElementById("score").textContent + 1;
+      break;
+    case "cpu":
+      updateOutcome("./images/sad-circle-svgrepo-com.svg", "You Lost!", 0);
+  }
+  // scoreBoardUpdate();
+  document.querySelector(".results-container").style.display = "flex";
 };
 
 /* Delete at End */
-renderGameConsole();
+// renderGameConsole();
 
 const startGame = function () {
   document.getElementById("start-section").style.display = "none";
-  document.getElementById("game-section").style.display = "block";
+  document.getElementById("game-section").style.display = "flex";
   renderGameConsole();
 };
 
+// Could make last bit of code more dry.
 const runCallbacks = function (event) {
   if (event.target.id === "start-button") {
     startGame();
@@ -145,7 +192,18 @@ const runCallbacks = function (event) {
     repeatImage(cpuItemImage, cpuItemName)
       .then(pickCpuItem)
       .then(declareWinner)
-      .then(displayScore);
+      .then(displayOutcome);
+  } else if (event.target.id === "play-again") {
+    document.querySelector(".results-container").style.display = "none";
+    document.querySelector(".cpu-container").style.display = "none";
+  } else if (event.target.id === "quit") {
+    // document.querySelector(".results-container").style.display = "none";
+    document.getElementById("your-score").textContent = 0;
+    // document.querySelector(".cpu-container").style.display = "none";
+    // document.getElementById("game-section").style.display = "none";
+    // document.getElementById("start-section").style.display = "flex";
+    // document.querySelector(".game-console-container").innerHTML = "";
+    location.reload();
   }
 };
 

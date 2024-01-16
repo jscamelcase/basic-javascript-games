@@ -203,9 +203,12 @@ h2 {
 
 /* game section */
 
-/* #game-section {
+#game-section {
   display: none;
-} */
+  position: relative;
+  flex-direction: column;
+  justify-content: space-around;
+}
 
 .score-container {
   color: white;
@@ -310,4 +313,57 @@ h2 {
   font-size: 1.2rem;
   margin-top: 10px;
   text-align: center;
+}
+
+/* results popout */
+
+.results-container {
+  height: 320px;
+  width: 80%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto auto;
+  background-color: #5f4ddb;
+  padding: 10px 20px 28px;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.results-container p {
+  color: white;
+  margin-top: 5px;
+  font-family: "orange kid";
+  font-size: 1.3rem;
+}
+
+.results-container img {
+  width: 50px;
+  padding-top: 10px;
+}
+
+.results-buttons {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.results-buttons button {
+  background-color: #5f4ddb;
+  color: white;
+  padding: 10px 20px 12px;
+  border: solid white 2px;
+  font-family: "orange kid";
+  font-size: 1.2rem;
+}
+
+img[src="./images/sad-circle-svgrepo-com.svg"],
+img[src="./images/equal-sign-svgrepo-com.svg"] {
+  color: #808080;
 }
