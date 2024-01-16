@@ -154,7 +154,7 @@ const declareWinner = function () {
     return "tie";
   } else if (
     (playerItem === "Rock" && cpuItem === "Scissors") ||
-    (playerItem === "Paper" && cpuItem === "rock") ||
+    (playerItem === "Paper" && cpuItem === "Rock") ||
     (playerItem === "Scissors" && cpuItem === "Paper")
   ) {
     return "player";
