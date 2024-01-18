@@ -25,7 +25,9 @@ const app = initializeApp(appSettings);
 const database = getDatabase(app);
 const highScoreInDB = ref(database, "highScore");
 
-// set()(
+// lock screen orientation to portrait
+screen.orientation.lock("portrait-primary");
+
 // Self-Evoking Function to create local storage for players high score
 
 (function () {
