@@ -30,7 +30,7 @@ body {
 
 .player-board {
   width: 350px;
-  height: 92vh;
+  min-height: 92vh;
   border: 5px dashed #5f4ddb;
   padding: 10px;
 }
